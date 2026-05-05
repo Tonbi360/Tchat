@@ -15,19 +15,25 @@
 <body>
     <div id="chat-container">
         <header>
-            <h1>ChatApp</h1>
+            <h1>CHAT</h1>
+            <div id="pagination-controls">
+                <button id="prev-page">←</button>
+                <span id="page-number">Page 1</span>
+                <button id="next-page">→</button>
+            </div>
         </header>
         
         <div id="messages">
-            <!-- Messages will appear here -->
-            <div class="message received">Hello! This is a test message.</div>
-            <div class="message sent">Hi! This is what your sent messages look like.</div>
+            <!-- Messages go here -->
         </div>
 
-        <form id="message-form">
-            <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">
-            <button type="submit">Send</button>
-        </form>
+        <div id="input-area">
+            <button id="expand-btn">＋</button>
+            <form id="message-form" class="hidden">
+                <input type="text" id="message-input" placeholder="Write..." autocomplete="off">
+                <button type="submit" id="send-btn">SEND</button>
+            </form>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
