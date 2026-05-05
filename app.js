@@ -1,25 +1,28 @@
+const expandBtn = document.getElementById('expand-btn');
 const messageForm = document.getElementById('message-form');
 const messageInput = document.getElementById('message-input');
 const messagesContainer = document.getElementById('messages');
 
+// Toggle the input box expansion
+expandBtn.addEventListener('click', () => {
+    messageForm.classList.toggle('hidden');
+    if (!messageForm.classList.contains('hidden')) {
+        messageInput.focus();
+        expandBtn.style.transform = "rotate(45deg)";
+    } else {
+        expandBtn.style.transform = "rotate(0deg)";
+    }
+});
+
 messageForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevents the page from refreshing
-
-    const messageText = messageInput.value.trim();
-
-    if (messageText !== "") {
-        // 1. Create the message element
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', 'sent');
-        messageDiv.textContent = messageText;
-
-        // 2. Add it to the chat window
-        messagesContainer.appendChild(messageDiv);
-
-        // 3. Clear the input box
+    e.preventDefault();
+    const text = messageInput.value.trim();
+    if (text !== "") {
+        const div = document.createElement('div');
+        div.classList.add('message', 'sent');
+        div.textContent = text;
+        messagesContainer.appendChild(div);
         messageInput.value = "";
-
-        // 4. Scroll to the bottom
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 });
