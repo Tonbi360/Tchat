@@ -3,14 +3,20 @@ const messageForm = document.getElementById('message-form');
 const messageInput = document.getElementById('message-input');
 const messagesContainer = document.getElementById('messages');
 
-// Toggle the input box expansion
 expandBtn.addEventListener('click', () => {
+    console.log("Button clicked!"); // This shows up in developer tools
+    
+    // Toggle the class
     messageForm.classList.toggle('hidden');
-    if (!messageForm.classList.contains('hidden')) {
-        messageInput.focus();
-        expandBtn.style.transform = "rotate(45deg)";
-    } else {
+    
+    // Check if it's hidden or not
+    if (messageForm.classList.contains('hidden')) {
         expandBtn.style.transform = "rotate(0deg)";
+        expandBtn.textContent = "＋";
+    } else {
+        expandBtn.style.transform = "rotate(45deg)";
+        expandBtn.textContent = "＋"; 
+        messageInput.focus();
     }
 });
 
