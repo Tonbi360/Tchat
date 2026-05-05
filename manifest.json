@@ -1,0 +1,15 @@
+{
+  "name": "My Chat PWA",
+  "short_name": "ChatApp",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f0f2f5",
+  "theme_color": "#075e54",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1041/1041916.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
