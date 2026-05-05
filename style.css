@@ -1,22 +1,137 @@
-body { font-family: 'Courier New', Courier, monospace; margin: 0; background: #000; color: #fff; display: flex; justify-content: center; height: 100vh; }
-#chat-container { width: 100%; max-width: 500px; background: #000; border: 1px solid #333; display: flex; flex-direction: column; }
+body { 
+    font-family: 'Courier New', Courier, monospace; 
+    margin: 0; 
+    background: #000; 
+    color: #fff; 
+    display: flex; 
+    justify-content: center; 
+    height: 100vh; 
+    overflow: hidden; /* Prevents whole page bounce */
+}
 
-header { padding: 20px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
-header h1 { margin: 0; font-size: 1.2rem; letter-spacing: 2px; }
+#chat-container { 
+    width: 100%; 
+    max-width: 500px; 
+    background: #000; 
+    border-left: 1px solid #333; 
+    border-right: 1px solid #333; 
+    display: flex; 
+    flex-direction: column; 
+}
 
-#pagination-controls { font-size: 0.8rem; }
-#pagination-controls button { background: none; border: 1px solid #333; color: white; cursor: pointer; padding: 2px 8px; }
+header { 
+    padding: 20px; 
+    border-bottom: 1px solid #333; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
 
-#messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-.message { padding: 12px; border: 1px solid #333; max-width: 80%; line-height: 1.4; }
-.sent { align-self: flex-end; background: #fff; color: #000; }
-.received { align-self: flex-start; background: #000; color: #fff; border: 1px solid #fff; }
+header h1 { 
+    margin: 0; 
+    font-size: 1.2rem; 
+    letter-spacing: 2px; 
+}
 
-#input-area { padding: 20px; border-top: 1px solid #333; display: flex; align-items: center; gap: 10px; }
-#expand-btn { background: #fff; color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; transition: transform 0.3s; }
+#pagination-controls { 
+    font-size: 0.8rem; 
+}
 
-#message-form { display: flex; flex: 1; gap: 10px; transition: all 0.4s ease-in-out; overflow: hidden; }
-#message-form.hidden { width: 0; opacity: 0; pointer-events: none; }
+#pagination-controls button { 
+    background: none; 
+    border: 1px solid #333; 
+    color: white; 
+    cursor: pointer; 
+    padding: 2px 8px; 
+}
 
-#message-input { flex: 1; background: transparent; border: none; border-bottom: 1px solid #fff; color: white; outline: none; padding: 5px; }
-#send-btn { background: transparent; border: 1px solid #fff; color: #fff; padding: 5px 15px; cursor: pointer; font-size: 0.7rem; }
+#messages { 
+    flex: 1; 
+    padding: 20px; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+}
+
+.message { 
+    padding: 12px; 
+    border: 1px solid #333; 
+    max-width: 80%; 
+    line-height: 1.4; 
+    word-wrap: break-word;
+}
+
+.sent { 
+    align-self: flex-end; 
+    background: #fff; 
+    color: #000; 
+}
+
+.received { 
+    align-self: flex-start; 
+    background: #000; 
+    color: #fff; 
+    border: 1px solid #fff; 
+}
+
+#input-area { 
+    padding: 20px; 
+    border-top: 1px solid #333; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    min-height: 50px;
+}
+
+#expand-btn { 
+    background: #fff; 
+    color: #000; 
+    border: none; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    font-size: 24px; 
+    cursor: pointer; 
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Prevents button from squishing */
+}
+
+/* THE EXPANDING FORM LOGIC */
+#message-form { 
+    display: flex; 
+    flex: 1; 
+    gap: 10px; 
+    transition: all 0.3s ease; 
+    overflow: hidden;
+    max-width: 500px; /* Allow it to grow */
+    opacity: 1;
+}
+
+#message-form.hidden { 
+    max-width: 0; 
+    opacity: 0; 
+    pointer-events: none; 
+    margin: 0;
+}
+
+#message-input { 
+    flex: 1; 
+    background: transparent; 
+    border: none; 
+    border-bottom: 1px solid #fff; 
+    color: white; 
+    outline: none; 
+    padding: 5px; 
+    font-family: inherit;
+}
+
+#send-btn { 
+    background: transparent; 
+    border: 1px solid #fff; 
+    color: #fff; 
+    padding: 5px 15px; 
+    cursor: pointer; 
+    font-size: 0.7rem; 
+    font-family: inherit;
+}
