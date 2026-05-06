@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,13 @@
     <title>My Chat PWA</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-</script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
 </head>
 <body>
     <div id="chat-container">
@@ -18,13 +21,13 @@
             <h1>CHAT</h1>
             <div id="pagination-controls">
                 <button id="prev-page">←</button>
-                <span id="page-number">Page 1</span>
+                <span id="page-number">Today</span>
                 <button id="next-page">→</button>
             </div>
         </header>
         
         <div id="messages">
-            <!-- Messages go here -->
+            <!-- Messages will stream here from Firebase -->
         </div>
 
         <div id="input-area">
@@ -35,6 +38,8 @@
             </form>
         </div>
     </div>
-    <script src="app.js"></script>
+
+    <!-- We use type="module" so we can use Firebase imports in app.js -->
+    <script type="module" src="app.js"></script>
 </body>
 </html>
